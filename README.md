@@ -21,23 +21,23 @@ Since this package is not yet published on Packagist, you need to add it as a VC
             "url": "https://github.com/EddysStudio/currencies-widget"
         }
     ],
-
+```
 and add the package to section "require":
 ```json
     "require": {
         ...
         "eddysstudio/currencies-widget": "^1.0"
     },
-
+```
 2. Register the Widget in your Filament panel.
 
 In the /app/Providers/Filament/AdminPanelProvider.php add widget class:
-...php
+```php
     ->widgets([
         ..
         \EddysStudio\CurrenciesWidget\Filament\Widgets\CryptoPricesWidget::class,
     ]) 
-
+```
 ## Usage
 
 Once the plugin is registered, the widget will automatically appear on your Filament dashboard. It shows current exchange rates for the selected currencies.
