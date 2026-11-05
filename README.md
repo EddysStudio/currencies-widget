@@ -1,86 +1,47 @@
-# This is my package currencies-widget
+# Currencies Widget for Filament
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/EddysStudio/currencies-widget.svg?style=flat-square)](https://packagist.org/packages/EddysStudio/currencies-widget)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/EddysStudio/currencies-widget/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/EddysStudio/currencies-widget/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/EddysStudio/currencies-widget/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/EddysStudio/currencies-widget/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/EddysStudio/currencies-widget.svg?style=flat-square)](https://packagist.org/packages/EddysStudio/currencies-widget)
+A simple Filament widget that displays real-time currency exchange rates (USD, EUR, GBP, etc.) on your dashboard. Data is fetched from a free API and cached to avoid rate limits.
 
+## Requirements
 
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+- PHP 8.2 or higher
+- Laravel 12
+- Filament 4.x
 
 ## Installation
 
-You can install the package via composer:
+Since this package is not yet published on Packagist, you need to add it as a VCS repository in your project's `composer.json`.
 
-```bash
-composer require EddysStudio/currencies-widget
-```
+1. Add the repository to your `composer.json`:
+{
+...
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/EddysStudio/currencies-widget"
+        }
+    ],
+...
+and add the package to section "require":
+    "require": {
+        ...
+        "eddysstudio/currencies-widget": "^1.0"
+    },
 
-> [!IMPORTANT]
-> If you have not set up a custom theme and are using Filament Panels follow the instructions in the [Filament Docs](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) first.
+2. Register the Widget in your Filament panel.
 
-After setting up a custom theme add the plugin's views to your theme css file or your app's css file if using the standalone packages.
-
-```css
-@source '../../../../vendor/EddysStudio/currencies-widget/resources/**/*.blade.php';
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="currencies-widget-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="currencies-widget-config"
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="currencies-widget-views"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
+In the /app/Providers/Filament/AdminPanelProvider.php add widget class:
+...
+    ->widgets([
+        ...
+        \EddysStudio\CurrenciesWidget\Filament\Widgets\CryptoPricesWidget::class,
+    ]) 
 
 ## Usage
 
-```php
-$CurrenciesWidget = new EddysStudio\CurrenciesWidget();
-echo $CurrenciesWidget->echoPhrase('Hello, EddysStudio!');
-```
+Once the plugin is registered, the widget will automatically appear on your Filament dashboard. It shows current exchange rates for the selected currencies.
 
-## Testing
-
-```bash
-composer test
-```
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](.github/SECURITY.md) on how to report security vulnerabilities.
-
-## Credits
-
-- [EddySun](https://github.com/EddysStudio)
-- [All Contributors](../../contributors)
+You can customize which currencies are displayed through the widget's built-in filter form.
 
 ## License
 
