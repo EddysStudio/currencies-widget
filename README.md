@@ -14,15 +14,16 @@ Since this package is not yet published on Packagist, you need to add it as a VC
 
 1. Add the repository to your `composer.json`:
 {
-...
+```json
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/EddysStudio/currencies-widget"
         }
     ],
-...
+
 and add the package to section "require":
+```json
     "require": {
         ...
         "eddysstudio/currencies-widget": "^1.0"
@@ -31,9 +32,9 @@ and add the package to section "require":
 2. Register the Widget in your Filament panel.
 
 In the /app/Providers/Filament/AdminPanelProvider.php add widget class:
-...
+...php
     ->widgets([
-        ...
+        ..
         \EddysStudio\CurrenciesWidget\Filament\Widgets\CryptoPricesWidget::class,
     ]) 
 
