@@ -1,6 +1,6 @@
 {
     "name": "eddysstudio/currencies-widget",
-    "description": "This is my package currencies-widget",
+    "description": "A simple Filament widget that displays real-time currency exchange rates (USD, EUR, GBP, etc.) on your dashboard. Data is fetched from a free API and cached to avoid rate limits.",
     "keywords": [
         "EddysStudio",
         "laravel",
@@ -9,6 +9,7 @@
         "filament-plugin",
         "currencies-widget"
     ],
+    "type": "library",
     "homepage": "https://github.com/EddysStudio/currencies-widget",
     "support": {
         "issues": "https://github.com/EddysStudio/currencies-widget/issues",
@@ -70,6 +71,6 @@
             "phpstan/extension-installer": true
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
